@@ -62,7 +62,7 @@
     <h1>ESPOS</h1>
     <h2>A free operating system for ESP32</h2>
     <img src="static.png" alt="ESPOS Logo" class="logo" id="logo">
-    <div class="container markdown-body" id="readme" class="typing"></div>
+    <div class="container markdown-body typing" id="readme"></div>
     <script>
         setTimeout(() => {
             document.getElementById('logo').style.opacity = "1";
@@ -77,7 +77,7 @@
                 target.innerHTML = "";
                 function typeEffect() {
                     if (index < text.length) {
-                        target.innerHTML += text[index];
+                        target.innerHTML = marked.parse(text.substring(0, index + 1));
                         index++;
                         setTimeout(typeEffect, 15);
                     }
