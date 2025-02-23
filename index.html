@@ -4,19 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ESPOS</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-dark.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f3f4f6;
+            background-color: #121212;
+            color: #ffffff;
             text-align: center;
             padding: 20px;
         }
         .container {
-            background: white;
+            background: #1e1e1e;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
             max-width: 800px;
             margin: auto;
         }
@@ -24,16 +25,27 @@
             width: 449px;
             height: 324px;
             display: block;
-            margin: 20px auto;
+            margin: 50px auto;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+        }
+        h1, h2 {
+            color: #ffffff;
         }
     </style>
 </head>
 <body>
     <h1>ESPOS</h1>
     <h2>A free operating system for ESP32</h2>
-    <img src="static.png" alt="ESPOS Logo" class="logo">
+    <img src="static.png" alt="ESPOS Logo" class="logo" id="logo">
     <div class="container markdown-body" id="readme"></div>
     <script>
+        setTimeout(() => {
+            document.getElementById('logo').style.opacity = "1";
+            document.getElementById('logo').style.transform = "translateY(0)";
+        }, 1000);
+
         fetch('README.md')
             .then(response => response.text())
             .then(text => {
