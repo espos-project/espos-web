@@ -56,12 +56,39 @@
                 border-color: transparent;
             }
         }
+        .button-container {
+            margin-top: 20px;
+        }
+        .button {
+            background-color: #ff9800;
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background-color: #e68900;
+        }
+        .subtitle {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #bbbbbb;
+        }
     </style>
 </head>
 <body>
     <h1>ESPOS</h1>
     <h2>A free operating system for ESP32</h2>
     <img src="static.png" alt="ESPOS Logo" class="logo" id="logo">
+    <div class="button-container">
+        <a href="https://github.com/espos-project/espos/releases/latest" target="_blank">
+            <button class="button">Get ESPOS</button>
+        </a>
+        <p class="subtitle">You need to flash or update via ESPOS DFU mode or esptool</p>
+    </div>
     <div class="container markdown-body typing" id="readme"></div>
     <script>
         setTimeout(() => {
