@@ -1,5 +1,5 @@
 # ESPOS Project
-[ESPOS Home github repo](https://github.com/espos-project/espos)
+[ESPOS Home GitHub repo](https://github.com/espos-project/espos)
 
 The ESPOS Project aims to create a text operating system on ESP32 Hardware.
 
