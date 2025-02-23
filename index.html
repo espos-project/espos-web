@@ -20,6 +20,7 @@
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
             max-width: 800px;
             margin: auto;
+            overflow: hidden;
         }
         .logo {
             width: 449px;
@@ -29,9 +30,31 @@
             opacity: 0;
             transform: translateY(50px);
             transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+            animation: float 3s infinite ease-in-out alternate;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-15px);
+            }
         }
         h1, h2 {
             color: #ffffff;
+        }
+        .typing {
+            white-space: pre-wrap;
+            text-align: left;
+            font-family: monospace;
+            overflow: hidden;
+            border-right: 2px solid rgba(255, 255, 255, 0.75);
+            animation: blinkCursor 0.8s infinite;
+        }
+        @keyframes blinkCursor {
+            50% {
+                border-color: transparent;
+            }
         }
     </style>
 </head>
@@ -39,7 +62,7 @@
     <h1>ESPOS</h1>
     <h2>A free operating system for ESP32</h2>
     <img src="static.png" alt="ESPOS Logo" class="logo" id="logo">
-    <div class="container markdown-body" id="readme"></div>
+    <div class="container markdown-body" id="readme" class="typing"></div>
     <script>
         setTimeout(() => {
             document.getElementById('logo').style.opacity = "1";
@@ -49,7 +72,17 @@
         fetch('README.md')
             .then(response => response.text())
             .then(text => {
-                document.getElementById('readme').innerHTML = marked.parse(text);
+                let index = 0;
+                let target = document.getElementById('readme');
+                target.innerHTML = "";
+                function typeEffect() {
+                    if (index < text.length) {
+                        target.innerHTML += text[index];
+                        index++;
+                        setTimeout(typeEffect, 15);
+                    }
+                }
+                typeEffect();
             });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
